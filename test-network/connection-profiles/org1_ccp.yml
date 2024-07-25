@@ -1,0 +1,63 @@
+certificateAuthorities:
+    merkaba.cooperativa.com:
+        tlsCACerts:
+            path: /etc/firefly/organizations/peerOrganizations/merkaba.cooperativa.com/msp/tlscacerts/ca.crt
+        url: https://35.233.236.115:7054
+        grpcOptions:
+            ssl-target-name-override: merkaba.cooperativa.com
+        registrar:
+            enrollId: admin
+            enrollSecret: adminpw
+channels:
+    cooperativa:
+        orderers:
+            - orderer.cooperativa.com
+        peers:
+            peer0.merkaba.cooperativa.com:
+                chaincodeQuery: true
+                endorsingPeer: true
+                eventSource: true
+                ledgerQuery: true
+client:
+    BCCSP:
+        security:
+            default:
+                provider: SW
+            enabled: true
+            hashAlgorithm: SHA2
+            level: 256
+            softVerify: true
+    credentialStore:
+        cryptoStore:
+            path: /etc/firefly/organizations/peerOrganizations/merkaba.cooperativa.com/msp
+        path: /etc/firefly/organizations/peerOrganizations/merkaba.cooperativa.com/msp
+    cryptoconfig:
+        path: /etc/firefly/organizations/peerOrganizations/merkaba.cooperativa.com/msp
+    logging:
+        level: info
+    organization: merkaba.cooperativa.com
+    tlsCerts:
+        client:
+            cert:
+                path: /etc/firefly/organizations/peerOrganizations/merkaba.cooperativa.com/users/Admin@merkaba.cooperativa.com/msp/signcerts/cert.pem
+            key:
+                path: /etc/firefly/organizations/peerOrganizations/merkaba.cooperativa.com/users/Admin@merkaba.cooperativa.com/msp/keystore/07021002310373dbdc8642b6d31a0e15fb8e3fa54a8d9994993fb125fc9d09c5_sk
+orderers:
+    orderer.cooperativa.com:
+        tlsCACerts:
+            path: /etc/firefly/organizations/ordererOrganizations/cooperativa.com/orderers/orderer.cooperativa.com/tls/tlscacerts/tls-localhost-9054-ca-orderer.pem
+        url: grpcs://35.233.236.115:7050
+organizations:
+    merkaba.cooperativa.com:
+        certificateAuthorities:
+            - merkaba.cooperativa.com
+        cryptoPath: /tmp/msp
+        mspid: MerkabaMSP
+        peers:
+            - peer0.merkaba.cooperativa.com
+peers:
+    peer0.merkaba.cooperativa.com:
+        tlsCACerts:
+            path: /etc/firefly/organizations/peerOrganizations/merkaba.cooperativa.com/peers/peer0.merkaba.cooperativa.com/tls/tlscacerts/tls-localhost-7054-ca-merkaba.pem
+        url: grpcs://35.233.236.115:7051
+version: 1.1.0%

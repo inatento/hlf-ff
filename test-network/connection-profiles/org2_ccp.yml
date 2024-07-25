@@ -1,0 +1,63 @@
+certificateAuthorities:
+    visa.cooperativa.com:
+        tlsCACerts:
+            path: /etc/firefly/organizations/peerOrganizations/visa.cooperativa.com/msp/tlscacerts/ca.crt
+        url: https://ca_visa:8054
+        grpcOptions:
+            ssl-target-name-override: visa.cooperativa.com
+        registrar:
+            enrollId: admin
+            enrollSecret: adminpw
+channels:
+    mychannel:
+        orderers:
+            - fabric_orderer
+        peers:
+            fabric_peer:
+                chaincodeQuery: true
+                endorsingPeer: true
+                eventSource: true
+                ledgerQuery: true
+client:
+    BCCSP:
+        security:
+            default:
+                provider: SW
+            enabled: true
+            hashAlgorithm: SHA2
+            level: 256
+            softVerify: true
+    credentialStore:
+        cryptoStore:
+            path: /etc/firefly/organizations/peerOrganizations/visa.cooperativa.com/msp
+        path: /etc/firefly/organizations/peerOrganizations/visa.cooperativa.com/msp
+    cryptoconfig:
+        path: /etc/firefly/organizations/peerOrganizations/visa.cooperativa.com/msp
+    logging:
+        level: info
+    organization: visa.cooperativa.com
+    tlsCerts:
+        client:
+            cert:
+                path: /etc/firefly/organizations/peerOrganizations/visa.cooperativa.com/users/Admin@visa.cooperativa.com/msp/signcerts/cert.pem
+            key:
+                path: /etc/firefly/organizations/peerOrganizations/visa.cooperativa.com/users/Admin@visa.cooperativa.com/msp/keystore/94d7c266509b28cfe8c7712fdb83390a37b8bc5af6007d42c9bd6afbc606ebf2_sk
+orderers:
+    fabric_orderer:
+        tlsCACerts:
+            path: /etc/firefly/organizations/ordererOrganizations/cooperativa.com/orderers/orderer.cooperativa.com/tls/tlscacerts/tls-localhost-9054-ca-orderer.pem
+        url: grpcs://orderer.cooperativa.com:7050
+organizations:
+    visa.cooperativa.com:
+        certificateAuthorities:
+            - visa.cooperativa.com
+        cryptoPath: /tmp/msp
+        mspid: VisaMSP
+        peers:
+            - fabric_peer
+peers:
+    fabric_peer:
+        tlsCACerts:
+            path: /etc/firefly/organizations/peerOrganizations/visa.cooperativa.com/peers/peer0.visa.cooperativa.com/tls/tlscacerts/tls-localhost-8054-ca-visa.pem
+        url: grpcs://peer0.visa.cooperativa.com:9051
+version: 1.1.0%

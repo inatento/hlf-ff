@@ -2,19 +2,19 @@
 # Update /etc/hosts
 source    ./manage_hosts.sh
 
-HOSTNAME=peer1.merkaba.com
+HOSTNAME=peer0.merkaba.cooperativa.com
 removehost $HOSTNAME            &> /dev/null
 addhost $HOSTNAME
-HOSTNAME=peer1.visa.com
+HOSTNAME=peer0.visa.cooperativa.com
 removehost $HOSTNAME            &> /dev/null
 addhost $HOSTNAME
-HOSTNAME=peer1.bbva.com
+HOSTNAME=peer0.socio1.cooperativa.com
 removehost $HOSTNAME            &> /dev/null
 addhost $HOSTNAME
-HOSTNAME=peer1.santander.com
+HOSTNAME=peer0.santander.cooperativa.com
 removehost $HOSTNAME            &> /dev/null
 addhost $HOSTNAME
-HOSTNAME=orderer.merkaba.com
+HOSTNAME=orderer.cooperativa.com
 removehost $HOSTNAME            &> /dev/null
 addhost $HOSTNAME
 HOSTNAME=postgresql
@@ -23,6 +23,15 @@ addhost $HOSTNAME
 HOSTNAME=explorer
 removehost $HOSTNAME            &> /dev/null
 addhost $HOSTNAME
-HOSTNAME=vagrant
+HOSTNAME=ca_orderer
+removehost $HOSTNAME            &> /dev/null
+addhost $HOSTNAME
+HOSTNAME=ca_merkaba
+removehost $HOSTNAME            &> /dev/null
+addhost $HOSTNAME
+HOSTNAME=ca_visa
+removehost $HOSTNAME            &> /dev/null
+addhost $HOSTNAME
+HOSTNAME=ca_socio1
 removehost $HOSTNAME            &> /dev/null
 addhost $HOSTNAME
