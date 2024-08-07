@@ -153,9 +153,9 @@ fi
 # echo -e "${YELLOW}Se va a detener la pila dev${NC}"
 # ff remove dev -f
 
-# # Initialization FireFly Fabric stack as dev
-# sudo chmod -R 777 $FABRIC_TEST_NETWORK
-# cd $FABRIC_TEST_NETWORK
+# Initialization FireFly Fabric stack as dev
+sudo chmod -R 777 $FABRIC_TEST_NETWORK
+cd $FABRIC_TEST_NETWORK
 
 # # Se va a generar sólo una conexión con un sólo perfil para probar
 echo -e "${YELLOW}Inicializando la pila dev con firefly${NC}"
